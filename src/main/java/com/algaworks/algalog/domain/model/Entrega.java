@@ -1,7 +1,7 @@
 package com.algaworks.algalog.domain.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.algaworks.algalog.domain.ValidationGroups;
 
@@ -49,7 +49,7 @@ public class Entrega {
 	@Enumerated(EnumType.STRING)
 	private StatusEntrega status;
 	
-	private LocalDateTime dataPedido;	
-	private LocalDateTime dataFinalizacao;
+	private OffsetDateTime dataPedido;	
+	private OffsetDateTime dataFinalizacao;
 	
 }
