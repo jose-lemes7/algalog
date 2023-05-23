@@ -1,5 +1,6 @@
 package com.algaworks.algalog.api.controller;
 
+
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -67,7 +68,7 @@ public class ClienteController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Cliente adcionar(@Valid @RequestBody Cliente cliente) {
+	public Cliente adicionar(@Valid @RequestBody Cliente cliente) {
 //		return clienteRepository.save(cliente);
 		return catalogoClienteService.salvar(cliente);
 	}

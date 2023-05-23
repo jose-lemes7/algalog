@@ -1,8 +1,8 @@
-CREATE TABLE public.cliente
+CREATE TABLE cliente
 (
-    id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
-    nome character varying(60) NOT NULL,
-    email character varying(255) NOT NULL,
-    telefone character varying(20) NOT NULL,
-    PRIMARY KEY (id)
+	id bigint GENERATED ALWAYS AS IDENTITY NOT NULL,
+	nome VARCHAR(60) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	telefone VARCHAR(20) NOT NULL,
+	PRIMARY KEY (id)
 );
