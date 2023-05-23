@@ -14,6 +14,7 @@ import com.algaworks.algalog.domain.model.Entrega;
 import com.algaworks.algalog.domain.repository.EntregaRepository;
 import com.algaworks.algalog.domain.service.SolicitacaoEntregaServce;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -26,7 +27,7 @@ public class EntregaController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Entrega solicitar(@RequestBody Entrega entrega) {
+	public Entrega solicitar(@Valid @RequestBody Entrega entrega) {
 		return solicitacaoEntregaServce.solicitar(entrega);
 	}
 	
