@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.algaworks.algalog.domain.ValidationGroups;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -46,10 +48,14 @@ public class Entrega {
 	@NotNull
 	private BigDecimal taxa;
 	
+	@JsonProperty(access = Access.READ_ONLY)
 	@Enumerated(EnumType.STRING)
 	private StatusEntrega status;
 	
+	@JsonProperty(access = Access.READ_ONLY)
 	private OffsetDateTime dataPedido;	
+	
+	@JsonProperty(access = Access.READ_ONLY)
 	private OffsetDateTime dataFinalizacao;
 	
 }
