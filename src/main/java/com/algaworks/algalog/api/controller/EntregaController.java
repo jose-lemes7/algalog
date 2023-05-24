@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.algaworks.algalog.api.assembler.EntregaAssembler;
+import com.algaworks.algalog.api.model.EntregaModel;
 import com.algaworks.algalog.domain.model.Entrega;
-import com.algaworks.algalog.domain.model.EntregaModel;
 import com.algaworks.algalog.domain.repository.EntregaRepository;
 import com.algaworks.algalog.domain.service.SolicitacaoEntregaServce;
 

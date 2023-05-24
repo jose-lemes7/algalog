@@ -7,8 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.algaworks.algalog.api.model.EntregaModel;
 import com.algaworks.algalog.domain.model.Entrega;
-import com.algaworks.algalog.domain.model.EntregaModel;
 
 @Component
 public class EntregaAssembler {

@@ -1,7 +1,9 @@
-package com.algaworks.algalog.domain.model;
+package com.algaworks.algalog.api.model;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+
+import com.algaworks.algalog.domain.model.StatusEntrega;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.algaworks.algalog.domain.model;
+package com.algaworks.algalog.api.model;
 
 import lombok.Getter;
 import lombok.Setter;
