@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.algaworks.algalog.domain.model.DestinatarioModel;
+import com.algaworks.algalog.api.assembler.EntregaAssembler;
 import com.algaworks.algalog.domain.model.Entrega;
 import com.algaworks.algalog.domain.model.EntregaModel;
 import com.algaworks.algalog.domain.repository.EntregaRepository;
@@ -28,37 +28,25 @@ public class EntregaController {
 
 	private EntregaRepository entregaRepository;
 	private SolicitacaoEntregaServce solicitacaoEntregaServce;
+	private EntregaAssembler assembler;
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Entrega solicitar(@Valid @RequestBody Entrega entrega) {
-		return solicitacaoEntregaServce.solicitar(entrega);
+	public EntregaModel solicitar(@Valid @RequestBody Entrega entrega) {
+		Entrega entregaSolicitada = solicitacaoEntregaServce.solicitar(entrega);
+		return assembler.toModel(entregaSolicitada);
 	}
 	
 	@GetMapping
-	public List<Entrega> listar() {
-		return entregaRepository.findAll();
+	public List<EntregaModel> listar() {
+		List<Entrega> list = entregaRepository.findAll();
+		return assembler.toCollection(list);
 	}
 	
 	@GetMapping("/{entregaId}")
 	public ResponseEntity<EntregaModel> buscar(@PathVariable Long entregaId) {
-		return entregaRepository.findById(entregaId	)
-			.map(entrega -> {
-				EntregaModel model = new EntregaModel();
-				model.setId(entrega.getId());
-				model.setNome(entrega.getCliente().getNome());
-				model.setStatus(entrega.getStatus());
-				model.setTaxa(entrega.getTaxa());
-				model.setDataPedido(entrega.getDataPedido());
-				model.setDataFinalizacao(entrega.getDataFinalizacao());
-				model.setDestinatario(new DestinatarioModel());
-				model.getDestinatario().setNome(entrega.getDestinatario().getNome());
-				model.getDestinatario().setLogradouro(entrega.getDestinatario().getLogradouro());
-				model.getDestinatario().setNumero(entrega.getDestinatario().getNumero());
-				model.getDestinatario().setComplemento(entrega.getDestinatario().getComplemento());
-				model.getDestinatario().setBairro(entrega.getDestinatario().getBairro());
-				return ResponseEntity.ok(model);
-			})
+		return entregaRepository.findById(entregaId)
+			.map(entrega -> ResponseEntity.ok(assembler.toModel(entrega)))
 			.orElse(ResponseEntity.notFound().build());
 		
 	}

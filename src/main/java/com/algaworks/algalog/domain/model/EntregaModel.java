@@ -11,7 +11,7 @@ import lombok.Setter;
 public class EntregaModel {
 
 	private Long id;
-	private String nome;
+	private String nomeCliente;
 	private DestinatarioModel destinatario;
 	private BigDecimal taxa;
 	private StatusEntrega status;
